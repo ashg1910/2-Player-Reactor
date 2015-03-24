@@ -1,0 +1,157 @@
+<html>
+	<link rel="stylesheet" href="./styles.css" type="text/css" media="all" charset="utf-8">
+	<body>
+
+		<center>
+		<h1 id="two">2</h1><br>
+		<p id= "player">Player</p>
+		<p id= "reactor">Reactor</p>
+
+		<div id="main" style="width:1000px;height:500px; border-radius:25px">
+
+			<div id="player1" style="width:250px;height:500px;background-color:yellow ;float:left;border-radius:25px;text-color:black"><br>
+				<h4 id="plr1">Player 1</h4><br><br><br><br><br><br><br><br>
+				<h2 id="score1"></h2>
+			</div>
+
+			<div id="questions" style="width:500px;height:500px;background-color:#FFA500;float:left;border-radius:25px">
+				<h1 id="question">Instructions!</h3>
+				<img id="image" url="" style="width:0px;height:0px;border-radius:25px"><br><br><br>
+				<ul id="instructions" >
+					<li>This is a 2 player game and there will be a series of questions appearing on the screen.</li>
+					<br>
+					<li>This game will be testing your reflexes! As soon as you see the question press the button if you think the answer given to it below is true, else dont hit the button.</li>
+					<br>
+					<li>Player1 has to press the key 'a' and Player2 has to press the key 'l'. The one who reacts before and is correct scores a point.</li>
+					<br>
+					<li>There will be a +1 for each correct answer and a negative mark for each wrong answer.</li>
+					<br>
+				</ul>	
+				<h1 id="number" ></h1>
+			</div>
+
+			<div id="player2" style="width:250px;height:500px;background-color:yellow;float:left;border-radius:25px"><br>
+				<h4 id="plr2">Player 2</h4><br><br><br><br><br><br><br><br>
+				<h2 id="score2"></h2>
+			</div>
+
+		</div>
+
+		<br><br>
+		<div id="play">
+			<form action = "" id="names" style = "display:none;">
+				Player1: <input id="firstplayer"  type="text" name="first" value=""><br><br>
+				Player2: <input id="secondplayer" type="text" name="second" value ="">
+			</form>
+			<br><br>
+			<div class="button">
+			<input type ="button" value="Play!" onclick="start();" id="playbutton" style = "display:none;">
+			</div>
+		</div>
+
+		<div id="next">
+			<div class="button">
+			<br>
+			<input type ="button" value="Next!" onclick="next();" id="nextbutton"> 
+			</div>		
+		</div>
+
+		</center>
+
+		<script>
+			var a = document.getElementById('questions');
+			var c = document.getElementById('image');
+			var count1=0;
+			var count2=0;
+			var i=8;
+			var x = 0;
+			var ans = 0;
+			var q1=0;
+			var q2=0;
+			var q3=0;
+			var q4=0;
+			var q5=0;
+			var score1=0;
+			var score2=0;
+			var p1=0;
+			var p2=0;
+			var q=0;
+			var w=1;
+			x=document.getElementById('player1');
+			y=document.getElementById('player2');
+			var b = document.getElementById('number');
+			p1 = document.getElementById('score1');
+			p2 = document.getElementById('score2');
+
+			function myfunction(event)
+			{
+				if(q==1)
+				{
+					if(event.keyCode == 65)
+					{
+						if(ans==1)
+						{
+							x.style.background = "green";
+							score1+=1;
+							p1.innerHTML = score1;
+							q=0;
+						}
+						if(ans==0)
+						{
+							x.style.background = "red";
+							score1-=1;
+							p1.innerHTML = score1;
+						}
+						setTimeout(back1,500);
+					}
+					if(event.keyCode == 76)
+					{
+						if(ans==1)
+						{
+							y.style.background = "green";
+							score2+=1;
+							p2.innerHTML = score2;
+							q=0;
+						}
+						if(ans==0)
+						{
+							y.style.background = "red";
+							score2-=1;
+							p2.innerHTML = score2;			
+						}
+						setTimeout(back2,500);
+					}
+					
+				}
+			}
+
+			function back1()
+			{
+				x.style.background = "#FFD700";
+			}
+
+			function back2()
+			{
+				y.style.background = "#FFD700";
+			}
+
+			window.addEventListener('keydown',myfunction);
+
+			function next()
+			{
+				document.getElementById('question').innerHTML = "Get Ready!";
+				document.getElementById('names').style.display = 'block';
+				document.getElementById('nextbutton').style.display = 'none';
+				document.getElementById('playbutton').style.display = 'block';
+				document.getElementById('instructions').style.display = 'none';
+
+			}
+		</script>
+		<script type="text/javascript" src="./question1.js" ></script>
+		<script type="text/javascript" src="./question2.js" ></script>
+		<script type="text/javascript" src="./question3.js" ></script>
+		<script type="text/javascript" src="./question4.js" ></script>
+		<script type="text/javascript" src="./question5.js" ></script>
+
+	</body>
+</html>
